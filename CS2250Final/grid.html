@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON Parsing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="generateMonth()">
+    <nav>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <h1>Nik's Event Calandar</h1>
+        <div class="nav-controls">
+        </div>
+    </nav>
+    <br>
+    <br>
+    <button onclick="clearEvents()">Clear Local Storage</button>
+    <br>
+    <div id="monthName"></div>
+    <div id="year"></div>
+    <br>
+    <div class="monthContent">
+        <button onclick="previousMonth()">Previous Month</button>
+        <button onclick="nextMonth()">Next Month</button>
+    </div>
+    <br>
+    <div class="flexArea">
+        <div id="jsCalandar"></div>
+        <div id="dayView">
+            <div class="dayContent">
+                <div class="currentEvents">
+                    <h2 id="day"></h2>
+                    <hr>
+                    <br>
+                    <div id="jsonContent"></div>
+                </div>
+                <div class="addNewContent">
+                    <h2>Add a new event</h2>
+                    <hr>
+                    <br>
+                    <label>Event Name: </label>
+                    <br>
+                    <input type="text" id="eventName">
+                    <br>
+                    <br>
+                    <label>Event Start: </label>
+                    <br>
+                    <input type="text" id="eventStart">
+                    <br>
+                    <br>
+                    <label>Event type: </label>
+                    <br>
+                    <select name="" id="eventType">
+                        <option value="Holiday">Holiday</option>
+                        <option value="Personal Time">Personal Time</option>
+                        <option value="Auction">Auction</option>
+                        <option value="Concert">Concert</option>
+                        <option value="Dance">Dance</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label>Event Duration</label>
+                    <br>
+                    <input type="text" id="eventDuration">
+                    <br>
+                    <br>
+                    <label>Event Description</label>
+                    <br>
+                    <textarea id="eventDesc" rows="10" cols="25"></textarea>
+                    <br>
+                    <br>
+                    <br>
+                    <button onclick="addEvent()" id="eButton">Add the event</button>
+                    <button onclick="closeWindow()" id="eButton">Close window</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="view.js"></script>
+    <script src="model.js"></script>
+</body>
+
+</html>
