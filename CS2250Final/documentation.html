@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <h1>Nik's Event Calandar</h1>
+        <div class="nav-controls">
+            <a href="#" class="active">Calandar Description</a>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <a href="./grid.html">JSCalandar</a>
+        </div>
+    </nav>
+    <br>
+    <div class="main-content">
+        <h1>JS Event Calandar Description</h1>
+        <hr>
+        <h2>Quick notes</h2>
+        <p>My project does have a default state with 5 events. If they do not appear for you click the "clear local storage button" this will load a default state.
+            In order to load my projects JSON locally you may have to use CMD -> PATH//Chrome.exe --allow-file-access-from-files</p
+        <br>
+        <h2>Overview</h2>
+        <p>The event calandar is split between several different files: view.js, model.js and calandar.json. <br><br>
+        View.js <br> is responsible for only elemements that have to do with what the user sees on screen. It generates the months and what
+        is inside the differnt days of the calandar. It is also responsible for the logic dictating what the "previous month" and "next month"
+        button's do. It does not do any of the calculations for how long a month is or when it ends. It also does not generate the events. It is 
+        simply the visual components. <br><br>
+        Model.js <br> on the other hand handles all of JSON parsing as well as event creation. The most significant parts that make the calandar
+        work the way it works is stored here. Event objects are defind here, the interaction with local storage is done here and creation of 
+        events are added through here.<br><br>
+        Calandar.JSON <br> is a json file I created myself that defines the months of the calandar. The number of days, the month name, the current year
+        and what day of the month is the first, all comes from this file.</p>
+        <br>
+        <h2>Milestones</h2>
+        <p>According to the project page the following features must be included in order to have a completed event calandar:<br><br>
+        A Grid displaying the name of the days of the month at the top: implemented.<br><br>
+        Each day of the month displayed in a squre below with an event counter: implemented.<br><br>
+        Buttons to move the calandar month from one month to another (back or forward): implemented<br><br>
+        Clicking on the day brings up a day view with the events listed for that day: implemented<br><br>
+        There are two buttons for the day view, one allows the user to add an event, the other exits back to the calandar: implemented<br><br>
+        Each event has several attributes such as: duration, description, type, location: implemented<br><br>
+        Game has a default state to prove correct functionality: Implemented</p><br>
+        <h2>Other Requirements</h2>
+        <p>In our projects we are suppose to implement an HTML5 attribute like localstorage, canvas, audio or video.<br>
+        My project runs on localstorage and cannot be used without it. Local storage holds my object array for events as well as
+        populating important calandar information.
+        <br>
+        Ajax: my project uses JSON in order to get the different months of the year. The JSON is parsed in Model.js</p><br>
+</body>
+
+</html>

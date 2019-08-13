@@ -1,11 +1,21 @@
+// the following events can be deleted and are only for default game state
+var event1 = new event("4","July","2019","America Day", "Noon", "Holiday", "All Day", "my house", "The day to celebrate America");
+var event2 = new event("19","July","2019","Nik's Birthday", "All Day", "Other", "All Day", "my house", "The day to celebrate Nik");
+var event3 = new event("19","July","2019","Track Day", "3:00pm", "Other", "4 hours", "Race Track", "The day to Race");
+var event4 = new event("5","July","2019","A counter day", "3:00pm", "Other", "4 hours", "NA", "The day to count");
+var event5 = new event("5","July","2019","A counter day", "3:00pm", "Other", "4 hours", "NA", "The day to count");
+var event6 = new event("5","July","2019","A counter day", "3:00pm", "Other", "4 hours", "NA", "The day to count");
+
 if (localStorage.month == "undefined" || localStorage.month == "NaN" || localStorage.month == undefined) {
     localStorage.setItem("month", "6");
 }
 
+// set month according to local storage
 var month = Number(localStorage.month);
 
 var calandarJSON = loadLocalJSON();
 
+//parse the JSON
 function loadLocalJSON() {
     var jsonRequest = new XMLHttpRequest();
     jsonRequest.open("GET", "calandar.json", false);
@@ -17,6 +27,7 @@ function loadLocalJSON() {
     return responseJSON;
 }
 
+//The followng are functions to send out different attributes of parsed JSON
 function getRows() {
     return calandarJSON.months[month].rows;
 }
@@ -53,7 +64,8 @@ function getYear() {
     return calandarJSON.calandarYear;
 }
 
-function event(day, month, year, name, startTime, type, duration, description) {
+//Event constructor 
+function event(day, month, year, name, startTime, type, duration, location, description) {
     this.day = day;
     this.month = month;
     this.year = year;
@@ -61,6 +73,7 @@ function event(day, month, year, name, startTime, type, duration, description) {
     this.startTime = startTime;
     this.type = type;
     this.duration = duration;
+    this.location = location;
     this.description = description;
     this.getEventName = function() {
         return "Event Name: " + this.name
@@ -71,11 +84,24 @@ function event(day, month, year, name, startTime, type, duration, description) {
     };
 }
 
-function createEvent(day, month, year, name, startTime, type, duration, description) {
-    var calandarEvent = new event(day, month, year, name, startTime, type, duration, description);
+function createEvent(day, month, year, name, startTime, type, duration, location , description) {
+    var calandarEvent = new event(day, month, year, name, startTime, type, duration, location ,description);
     EventArray(calandarEvent);
 }
 
+//This function has no purpose other than to show example calander days and can be deleted
+function initializeExampleArray(){
+    let eventArray = [];
+    eventArray.push(event1);
+    eventArray.push(event2);
+    eventArray.push(event3);
+    eventArray.push(event4);
+    eventArray.push(event5);
+    eventArray.push(event6);
+    localStorage.setItem("array", JSON.stringify(eventArray));
+}
+
+//Used in the initilization of my event array in local storage
 function EventArray(calandarEvent) {
     if (localStorage.array == "undefined" || localStorage.array == "NaN" || localStorage.array == undefined) {
         let eventArray = [];
@@ -88,6 +114,7 @@ function EventArray(calandarEvent) {
     }
 }
 
+//This function returns the days that have events and sets their counters
 function eventCount(dayCounter) {
     let numEventDate = 0;
     if (localStorage.getItem("array") === null) {
@@ -112,6 +139,8 @@ function eventCount(dayCounter) {
     }
 }
 
+//When the days are being created each cell id is compared with the event id in order to set the information pulled from
+// the data
 function loadEvents(cell) {
 
     let arrayEvent = JSON.parse(localStorage.getItem("array"));
@@ -130,6 +159,7 @@ function loadEvents(cell) {
                     "Event Start Time: " + arrayEvent[i].startTime + "<br />" +
                     "Event Type: " + arrayEvent[i].type + "<br />" +
                     "Event Duration: " + arrayEvent[i].duration + "<br />" +
+                    "Event Location: " + arrayEvent[i].location + "<br />"+
                     "Event Description: " + arrayEvent[i].description + "<br />" +
                     "</p>" +
                     "<br />";

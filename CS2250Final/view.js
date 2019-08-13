@@ -1,3 +1,4 @@
+//fuction looks long but is only purpose is to set the table headers
 function genarateHeader(columns) {
     var jsCalandar = document.getElementById("jsCalandar");
     var table = document.createElement("table");
@@ -48,6 +49,7 @@ function genarateHeader(columns) {
     jsCalandar.appendChild(table);
 }
 
+//gets data from model.js to set month name
 function displayMonthName() {
     var monthName = document.getElementById("monthName");
     var name = getMonthName();
@@ -55,6 +57,7 @@ function displayMonthName() {
     monthName.appendChild(displayRealMonthName);
 }
 
+//gets data from model.js to set the year
 function displayYear() {
     var monthName = document.getElementById("year");
     var name = getYear();
@@ -62,6 +65,7 @@ function displayYear() {
     monthName.appendChild(displayYearName);
 }
 
+// This uses data from model.js to set how many days in a month, when the month starts.
 function generateMonth() {
     var rows = getRows();
     var columns = getColumns();
@@ -136,9 +140,11 @@ function editCalandarDay() {
                 var eventStart = document.getElementById("eventStart").value;
                 var eventType = document.getElementById("eventType").value;
                 var eventDuration = document.getElementById("eventDuration").value;
+                var eventLocation = document.getElementById("eventLocation").value;
                 var eventDesc = document.getElementById("eventDesc").value;
 
-                createEvent(day, month, year, eventName, eventStart, eventDuration, eventType, eventDesc);
+                //create new events based on values
+                createEvent(day, month, year, eventName, eventStart, eventType, eventDuration, eventLocation, eventDesc);
 
                 dayView.style.visibility = "hidden";
                 window.location.reload();
@@ -150,7 +156,7 @@ function editCalandarDay() {
     }
 }
 
-
+// previous month button
 function previousMonth() {
     localStorage.month = Number(localStorage.month) - 1;
     if (localStorage.month < 0) {
@@ -160,6 +166,7 @@ function previousMonth() {
     console.log(localStorage.month);
 }
 
+//next month button
 function nextMonth() {
     localStorage.month = Number(localStorage.month) + 1;
     if (localStorage.month > 11) {
@@ -169,8 +176,10 @@ function nextMonth() {
     console.log(localStorage.month);
 }
 
+//clears events and initializes a default state
 function clearEvents() {
     alert("All calandar events and local storage will now be cleared!");
     localStorage.clear();
+    initializeExampleArray();
     window.location.reload();
 }
